@@ -7,8 +7,10 @@ import view.*;
 public class App 
 {
 	private static Controller	controller = new Controller();
-	private static Model		model = new Model();
-	private static View			view = new View();
+	private static Model		model = new Model(controller);
+	private static View			view = new View(controller, model);
+
+	private static String	players_file = "players.swi";
 
 	private static int	mode = -1;
 
@@ -39,7 +41,7 @@ public class App
 
 	public static void select_player()
 	{
-		view.load_players();
+		model.load_players(players_file);
 		view.display_all_players();
 		controller.select_player();
 	}
