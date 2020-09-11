@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import model.Model;
+import model.Player;
 
 public class View
 {
@@ -40,9 +41,12 @@ public class View
 		i = 0;
 		while (i < size) {
 			player = this.model.get_player(i);
-			player.loadPlayer();
+			System.out.println(player.toString());
 			i++;
 		}
-		System.out.println("DISPLAY ALL PLAYERS");
+	}
+
+	public void display_message(String message) {
+		System.out.println(message);
 	}
 }

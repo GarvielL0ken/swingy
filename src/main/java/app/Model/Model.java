@@ -18,6 +18,8 @@ public class Model
 	private Controller	controller;
 	private View		view;
 
+	public Player		player;
+
 	private int	mode;
 
 	public Model(Controller controller) {
@@ -59,6 +61,10 @@ public class Model
 		}
 	}
 
+	public void set_player(int index) {
+		this.player = this.get_player(index);
+	}
+
 	public void set_controller(Controller controller) {
 		this.controller = controller;
 	}
@@ -74,5 +80,13 @@ public class Model
 	public void load_players(String str_file) {
 		this.open_file(str_file);
 		this.read_file();
+	}
+
+	public int number_of_players() {
+		return (this.players.size());
+	}
+
+	public Player get_player(int index) {
+		return (this.players.get(index));
 	}
 }

@@ -20,8 +20,7 @@ public class Player extends Agent
 		this.position = new Position(0, 0);
 	}
 
-	public void loadPlayer()
-	{
-		System.out.println("loadPlayer(" + this.name + ")");
+	public String toString() {
+		return (this.id + ". " + this.name);
 	}
 }

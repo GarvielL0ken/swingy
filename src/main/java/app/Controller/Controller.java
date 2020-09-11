@@ -27,6 +27,15 @@ public class Controller
 	}
 
 	public void select_player() {
+		String user_input;
+
+		user_input = System.console().readLine();
+		System.out.println(user_input);
+
 		System.out.println("SELECT PLAYER");
+	}
+
+	public String get_input() {
+		return (System.console().readLine());
 	}
 }

@@ -41,15 +41,65 @@ public class App
 
 	public static void select_player()
 	{
+		String	response;
+		boolean	valid_response;
+		
+		valid_response = false;
+		while (!valid_response) {
+			view.display_message("Would you like to load an existing character or make a new one?:\n" +
+									"L. Load Character\n" +
+									"N. New Character");
+			response = controller.get_input();
+			if (response.equals("L")) {
+				load_player();
+				valid_response = true;
+			}
+			else if (response.equals("N")) {
+				new_player();
+				valid_response = true;
+			}
+			else
+				view.display_message("INVALID RESPONSE");
+		}
+		System.out.println(model.player.toString());
+	}
+
+	public static void load_player() {
+		boolean	valid_input;
+		int		input;
+
 		model.load_players(players_file);
-		view.display_all_players();
-		controller.select_player();
+
+		valid_input = false;
+		while (!valid_input) {
+			view.display_all_players();
+			try {
+				input = Integer.parseInt(controller.get_input()) - 1;
+				
+				if (0 <= input && input < model.number_of_players()) {
+					model.set_player(input);
+					valid_input = true;
+				}
+				else
+					view.display_message("INVALID INPUT. Enter a number that corresponds to the desired character");
+			} catch (NumberFormatException nfe) {
+				view.display_message("INVALID INPUT. Enter a number that corresponds to the desired character");
+			}
+		}
+	}
+
+	public static void new_player() {
+		System.out.println("NEW PLAYER");
 	}
 
 	public static void main( String[] args )
 	{
-		validate_arguments(args);
-		set_modes();
-		select_player();
+		Button	button;
+
+		button = new Button();
+		System.setProperty("java.awt.headless", "true");
+		//validate_arguments(args);
+		//set_modes();
+		//select_player();
 	}
 }
