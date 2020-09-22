@@ -47,6 +47,9 @@ public class View
 	}
 
 	public void display_message(String message) {
-		System.out.println(message);
+		if (mode == 0)
+			System.out.println(message);
+		else
+			System.out.println("GUI");
 	}
 }

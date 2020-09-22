@@ -1,0 +1,6 @@
+Name:New Character;Size:300,600;
+TYPE:TextField;
+TYPE:ButtonGroup;GroupName:Class;
+TYPE:RadioButton;GroupName:Class;Value:Light
+TYPE:RadioButton;GroupName:Class;Value:Medium
+TYPE:RadioButton;GroupName:Class;Value:Heavy

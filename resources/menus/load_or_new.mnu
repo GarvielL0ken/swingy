@@ -1,0 +1,3 @@
+NAME:Load Or New;SIZE:210:160;GAP:0;
+TYPE:Button;TEXT:New Character;BOUNDS:5:5:200:75;FUNCTION:newPlayer;
+TYPE:Button;TEXT:Load Character;BOUNDS:AUTO:AUTO:200:75;FUNCTION:loadPlayer;

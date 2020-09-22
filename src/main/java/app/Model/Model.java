@@ -21,6 +21,7 @@ public class Model
 	public Player		player;
 
 	private int	mode;
+	private static String	players_file = "players.swi";
 
 	public Model(Controller controller) {
 		this.set_controller(controller);
@@ -65,6 +66,19 @@ public class Model
 		this.player = this.get_player(index);
 	}
 
+	public void set_player_string(String name) {
+		int	size;
+		int	i;
+
+		System.out.println(name);
+		size = this.number_of_players();
+		i = 0;
+		while (i < size) {
+			if (this.players.get(i).get_name().equals(name))
+				this.set_player(i);
+		}
+	}
+
 	public void set_controller(Controller controller) {
 		this.controller = controller;
 	}
@@ -77,8 +91,8 @@ public class Model
 		this.mode = mode;
 	}
 
-	public void load_players(String str_file) {
-		this.open_file(str_file);
+	public void load_players() {
+		this.open_file(players_file);
 		this.read_file();
 	}
 
@@ -88,5 +102,26 @@ public class Model
 
 	public Player get_player(int index) {
 		return (this.players.get(index));
+	}
+
+	public String[] players_to_string() {
+		Player	player;
+		String	to_string[];
+		String	caption;
+		int	size;
+		int	i;
+
+		to_string = null;
+		size = this.number_of_players();
+		i = 0;
+
+		to_string = new String[size];
+		while (i < size) {
+			player = this.get_player(i);
+			caption = new String(player.get_name() + " Lvl. " + String.valueOf(player.level));
+			to_string[i] = caption;
+			i++;
+		}
+		return (to_string);
 	}
 }

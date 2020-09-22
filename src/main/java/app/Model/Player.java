@@ -3,6 +3,7 @@ package model;
 public class Player extends Agent
 {
 	private String	name;
+	private String	class_name;
 
 	public Player(boolean mode, String name) {
 		super(mode, name);
@@ -22,5 +23,13 @@ public class Player extends Agent
 
 	public String toString() {
 		return (this.id + ". " + this.name);
+	}
+
+	public String get_name() {
+		return (this.name);
+	}
+
+	public void set_class(String class_name) {
+		this.class_name = class_name;
 	}
 }

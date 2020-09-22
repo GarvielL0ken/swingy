@@ -10,8 +10,6 @@ public class App
 	private static Model		model = new Model(controller);
 	private static View			view = new View(controller, model);
 
-	private static String	players_file = "players.swi";
-
 	private static int	mode = -1;
 
 	public static void print_error_message(String msg)
@@ -41,7 +39,8 @@ public class App
 
 	public static void select_player()
 	{
-		String	response;
+		controller.select_player();
+		/*String	response;
 		boolean	valid_response;
 		
 		valid_response = false;
@@ -60,46 +59,14 @@ public class App
 			}
 			else
 				view.display_message("INVALID RESPONSE");
-		}
-		System.out.println(model.player.toString());
-	}
-
-	public static void load_player() {
-		boolean	valid_input;
-		int		input;
-
-		model.load_players(players_file);
-
-		valid_input = false;
-		while (!valid_input) {
-			view.display_all_players();
-			try {
-				input = Integer.parseInt(controller.get_input()) - 1;
-				
-				if (0 <= input && input < model.number_of_players()) {
-					model.set_player(input);
-					valid_input = true;
-				}
-				else
-					view.display_message("INVALID INPUT. Enter a number that corresponds to the desired character");
-			} catch (NumberFormatException nfe) {
-				view.display_message("INVALID INPUT. Enter a number that corresponds to the desired character");
-			}
-		}
-	}
-
-	public static void new_player() {
-		System.out.println("NEW PLAYER");
+		}*/
+		//System.out.println(model.player.toString());
 	}
 
 	public static void main( String[] args )
 	{
-		Button	button;
-
-		button = new Button();
-		System.setProperty("java.awt.headless", "true");
-		//validate_arguments(args);
-		//set_modes();
-		//select_player();
+		validate_arguments(args);
+		set_modes();
+		select_player();
 	}
 }
